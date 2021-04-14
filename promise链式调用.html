@@ -19,6 +19,7 @@
             }
         })
         .then((res) => {
+            // 链式调用每次都要返回一个新的promise
             return new Promise((resolve, reject) => {
                 resolve(`${res}again`)
             })
@@ -35,6 +36,8 @@
                 reject('no again')
             })
         })
+        // then 有两个方法，成功进入第一个 失败进入第二个  catch不会执行
+        // then 有一个方法   则会执行  catch
         .then((ok) => {
             console.log(ok)
         }, (err) => {
