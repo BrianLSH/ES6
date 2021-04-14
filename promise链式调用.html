@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var p1 = new Promise((resolve, reject) => {
+            const a = 3;
+            if (a > 1) {
+                resolve(a)
+            } else {
+                reject(4)
+            }
+        })
+        .then((res) => {
+            return new Promise((resolve, reject) => {
+                resolve(`${res}again`)
+            })
+        })
+        .then(res => {
+            return new Promise((resolve, reject) => {
+                resolve(`${res}again`)
+            })
+        })
+        .then(res => {
+            // console.log(res)
+
+            return new Promise((resolve, reject) => {
+                reject('no again')
+            })
+        })
+        .then((ok) => {
+            console.log(ok)
+        }, (err) => {
+            console.log(err)
+        })
+        
+        // .catch((err)=>{
+        //     console.log(err+'123')
+        // })
+
+
+    </script>
+</body>
+
+</html>
